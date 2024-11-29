@@ -1,1 +1,36 @@
-<p>TODO menu-category !</p>
+<h1>Menu Categories</h1>
+
+<form #categoryForm="ngForm" (ngSubmit)="createMenuCategory(categoryForm)">
+  <input
+    type="text"
+    name="name"
+    ngModel
+    placeholder="Category Name"
+    required
+    #name="ngModel"
+  />
+  <div *ngIf="name.invalid && name.touched">Category name is required</div>
+
+  <button type="submit" [disabled]="categoryForm.invalid">Add Category</button>
+</form>
+
+<section>
+  <table border="1" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Category Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of categories">
+        <td>{{ category.name }}</td>
+        <td>
+          <button (click)="getCategoryDetails(category.id)">View</button>
+          <button (click)="updateCategory(category.id, category)">Update</button>
+          <button (click)="deleteCategory(category.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

@@ -48,7 +48,6 @@ const routes: Routes = [
     RestaurantCategoryComponent,
     MenuComponent,
     MenuCategoryComponent
-
   ],
   providers: [
     provideAnimationsAsync(),
